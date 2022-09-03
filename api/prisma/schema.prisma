@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Arquivo {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  NomeArquivo String 
+  Data DateTime @default(now()) @db.Date
+}
+
+model NumerosTelefone {
+  codigoArquivo String @id  @default(auto()) @map("_id") @db.ObjectId
+  Telefone Int
+  Mensagem String
+  Validez Boolean
+}
+
+
